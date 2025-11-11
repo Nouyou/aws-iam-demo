@@ -1,6 +1,6 @@
-# AWS Identity and Access Management Clinical Trial Demo
+# AWS Identity and Access Management In Clinical Trial Setup
 
-[![GitHub](https://img.shields.io/badge/GitHub-Nouyou-blue?style=flat-square)](https://github.com/Nouyou)
+[![GitHub](https://img.shields.io/badge/GitHub-Nouyou_Michel-blue?style=flat-square)](https://github.com/Nouyou)
 
 This project demonstrates **AWS Identity and Access Management (IAM)** using Terraform to manage access for staff involved in a simulated clinical trial for HIV treatment. It showcases real-world best practices for **least privilege access, role-based access control, and secure S3 data storage**.
 
@@ -29,6 +29,52 @@ Additionally, the **`TrialDataAnalystRole`** can be assumed by `takop` for tempo
 
 ---
 
+## Architecture Diagram
+
+Below is the visual representation of the IAM access model for the clinical trial:
+
+```mermaid
+flowchart LR
+
+    subgraph AWS["AWS Account"]
+    
+        subgraph S3["S3: Clinical Trial Data Bucket"]
+            DATASET["clinical-trial-data-demo-dolutegravir-vs-cabotegravir"]
+        end
+
+        subgraph IAMGroups["IAM Groups"]
+            R["Researchers Group\n(Read/Write/Delete)"]
+            C["Coordinators Group\n(Write-Only Upload)"]
+            A["Auditors Group\n(Read-Only)"]
+        end
+
+        subgraph IAMUsers["IAM Users"]
+            U1["takop (Researcher)"]
+            U2["nouyou (Coordinator)"]
+            U3["emade (Auditor)"]
+        end
+
+        subgraph IAMRole["IAM Role"]
+            Role["TrialDataAnalystRole\n(Temporary Elevated Access)"]
+        end
+    
+    end
+
+    %% group memberships
+    U1 --> R
+    U2 --> C
+    U3 --> A
+
+    %% group permissions to S3
+    R -- Full Access --> DATASET
+    C -- Upload Only --> DATASET
+    A -- Read Only --> DATASET
+
+    %% role assumption
+    U1 -- canAssumeRole --> Role
+    Role -- TemporaryElevatedAccess --> DATASET
+
+```
 ## Terraform Overview
 
 The Terraform configuration does the following:
