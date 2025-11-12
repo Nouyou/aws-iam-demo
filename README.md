@@ -11,7 +11,12 @@ This project demonstrates **AWS Identity and Access Management (IAM)** using Ter
 We simulate a double-blinded controlled clinical trial testing two HIV drugs:
 
 - **Drug A:** Dolutegravir  
-- **Drug B:** Cabotegravir  
+- **Drug B:** Cabotegravir
+
+Created groups for each role and users
+
+![Groups](https://github.com/Nouyou/aws-iam-demo/blob/main/AWS%20group%20and%20policies.png)
+
 
 Clinical trial data is stored in an **AWS S3 bucket**, with staff access managed via IAM groups and policies. Different staff roles have restricted permissions:
 
@@ -22,13 +27,15 @@ Clinical trial data is stored in an **AWS S3 bucket**, with staff access managed
 | Auditor      | `emade`  | Read-only access to S3                 |
 
 Additionally, the **`TrialDataAnalystRole`** can be assumed by `takop` for temporary elevated access to perform advanced analysis.
+
 ![Figure showing Researcher's access Permission](https://github.com/Nouyou/aws-iam-demo/blob/main/Researchers%20policy-multiple.png)
+
 ![Coordinator's Permission](https://github.com/Nouyou/aws-iam-demo/blob/main/Coordinators%20policy-write.png)
+
 ![Auditor's Permission](https://github.com/Nouyou/aws-iam-demo/blob/main/Auditor%20policies.png)
 ---
 
 ## Project Structure
-
 ---
 
 ## Architecture Diagram
