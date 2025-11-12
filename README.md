@@ -22,6 +22,7 @@ Clinical trial data is stored in an **AWS S3 bucket**, with staff access managed
 | Auditor      | `emade`  | Read-only access to S3                 |
 
 Additionally, the **`TrialDataAnalystRole`** can be assumed by `takop` for temporary elevated access to perform advanced analysis.
+![Figure showing Researcher's access](https://github.com/Nouyou/aws-iam-demo/blob/main/Researchers%20policy-multiple.png)
 
 ---
 
