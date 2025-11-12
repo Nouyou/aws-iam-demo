@@ -2,6 +2,8 @@
 
 [![GitHub](https://img.shields.io/badge/GitHub-Nouyou_Michel-blue?style=flat-square)](https://github.com/Nouyou)
 
+![IAM for Clinical Trials](https://github.com/Nouyou/aws-iam-demo/blob/main/IAM%20Intro%20logo.png)
+
 This project demonstrates **AWS Identity and Access Management (IAM)** using Terraform to manage access for staff involved in a simulated clinical trial for HIV treatment. It showcases real-world best practices for **least privilege access, role-based access control, and secure S3 data storage**.
 
 ---
