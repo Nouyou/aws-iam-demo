@@ -28,6 +28,7 @@ Clinical trial data is stored in an **AWS S3 bucket**, with staff access managed
 | Coordinator  | `nouyou` | Write-only access to S3 (upload data) |
 | Auditor      | `emade`  | Read-only access to S3                 |
 
+
 Additionally, the **`TrialDataAnalystRole`** can be assumed by `takop` for temporary elevated access to perform advanced analysis.
 
 ![Figure showing Researcher's access Permission](https://github.com/Nouyou/aws-iam-demo/blob/main/Researchers%20policy-multiple.png)
@@ -110,7 +111,7 @@ The Terraform configuration does the following:
 - [AWS CLI v2](https://aws.amazon.com/cli/)  
 - AWS account with IAM user configured (`cloud-admin` profile)  
 
-### Initialize Terraform
+### Initialise Terraform
 
 ```powershell
 cd terraform
